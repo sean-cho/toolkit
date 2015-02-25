@@ -1,3 +1,5 @@
+#' @export
+
 myheatmap3 <- function(x,col=colorRampPalette(c("blue","black","yellow"))(50),...){
   heatmap.3(as.matrix(x),density.info="none",
             col=col,

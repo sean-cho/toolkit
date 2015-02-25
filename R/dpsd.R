@@ -11,6 +11,7 @@
 #'    is returned as a matrix.
 #'    
 #' @return A matrix of nrow = n features with highest sd.
+#' @export
 #' 
 #' @examples
 #' x1 <- matrix(rnorm(1000), nrow = 50)

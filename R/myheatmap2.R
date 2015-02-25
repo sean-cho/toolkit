@@ -12,6 +12,7 @@
 #' \code{RowSideCol}.
 #' 
 #' @return An object of the class list from \code{heatmap.2}.
+#' @export
 #' 
 #' @seealso \code{\link[gplots]{heatmap.2}}
 #' 

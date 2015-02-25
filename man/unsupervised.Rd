@@ -16,6 +16,9 @@ unsupervised(x, n, col = colorRampPalette(c("blue", "black", "yellow"))(50),
 
 \item{...}{Passes arguments to \code{heatmap.2}}
 }
+\value{
+A heatmap.2 object and plot.
+}
 \description{
 \code{unsupervised} Performs unsupervised clustering on the most
    variable features.

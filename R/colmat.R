@@ -26,6 +26,7 @@
 #'    is the \code{cex.axis} argument for x-lab.
 #'    
 #' @return Plot of a colored table.
+#' @export
 #' 
 #' @examples
 #' # Factor variables

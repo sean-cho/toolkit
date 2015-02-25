@@ -32,7 +32,8 @@
 #'      \item{adjp:}{adjusted p-value.}
 #'      \item{sigadj:}{adjp < \code{sig}}
 #'    }
-#'    
+#'
+#' @export    
 #' @examples
 #' pheno <- factor(sample(c('case','control'), 50, replace = TRUE))
 #' 

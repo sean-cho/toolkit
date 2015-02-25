@@ -12,6 +12,9 @@
 #'    deviation, clusters them, and plots it on a heatmap using the
 #'    \code{heatmap.2} function.
 #'    
+#' @return A heatmap.2 object and plot.
+#' @export
+#'    
 #' @seealso \code{\link[gplots]{heatmap.2}}
 
 unsupervised <- function(x,n,col=colorRampPalette(c("blue","black","yellow"))(50),...){

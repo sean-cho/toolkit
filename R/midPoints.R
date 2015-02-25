@@ -8,6 +8,7 @@
 #'    be used in plotting functions, especially for Manhattan plots.
 #' 
 #' @return A numeric vector of length \code{length(x) - 1}
+#' @export
 #' 
 #' @examples
 #' midPoints(rep(1, 10))

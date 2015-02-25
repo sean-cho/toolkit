@@ -7,6 +7,7 @@
 #' @details Converts \code{table} into matrix.
 #' 
 #' @return A matrix.
+#' @export
 #' 
 #' @examples
 #' x1 <- sample(c('a','b'),20,replace = TRUE)
