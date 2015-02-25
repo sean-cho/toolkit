@@ -5,11 +5,10 @@
 \title{Quick and dirty significance tests}
 \usage{
 summarizett(dat, phenotype, maxgroups = 5, sig = 0.05,
-  adjmethod = "bonferroni", num.test = wilcox.test, cl.test = fisher.test,
-  ...)
+  adjmethod = "bonferroni", num.test = wilcox.test, cl.test = fisher.test)
 }
 \arguments{
-\item{dat}{\code{Data.frame}/\code{matrix} with samples as rows and
+\item{dat}{\code{Data.frame}/\code{matrix} with dsamples as rows and
 variables as columns.}
 
 \item{phenotype}{Vector of phenotypes. See details.}

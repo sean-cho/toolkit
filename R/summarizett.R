@@ -3,7 +3,7 @@
 #' \code{summarizett} Perform significance tests as defined across columns in 
 #'    a data.frame/matrix.
 #' 
-#' @param dat \code{Data.frame}/\code{matrix} with samples as rows and
+#' @param dat \code{Data.frame}/\code{matrix} with dsamples as rows and
 #'    variables as columns.
 #' @param phenotype Vector of phenotypes. See details.
 #' @param maxgroups Maximum number of groups for contigency table test.
@@ -48,7 +48,7 @@
 
 summarizett <- function(dat, phenotype, maxgroups = 5, sig = 0.05, 
                        adjmethod = "bonferroni", num.test = wilcox.test, 
-                       cl.test = fisher.test, ...) {
+                       cl.test = fisher.test) {
   if (length(phenotype) == 1) {
     if (is.na(match(phenotype, colnames(dat)))) 
       stop("Phenotype not found in column names")
