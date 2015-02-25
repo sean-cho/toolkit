@@ -11,13 +11,15 @@
 #' \code{heatmap.2}. Most commonly used are \code{ColSideCol} and 
 #' \code{RowSideCol}.
 #' 
+#' @return An object of the class list from \code{heatmap.2}.
+#' 
 #' @seealso \code{\link[gplots]{heatmap.2}}
+#' 
+#' @importFrom gplots heatmap.2
 
-myheatmap2 = function(x,col=colorRampPalette(c("blue","black","yellow"))(50),...){
-  if(!requireNamespace('gplots', quietly = TRUE)){
-    stop('Package gplots needed for this function. Please install it', call. = FALSE)
+myheatmap2 <- function(x, col = colorRampPalette(c("blue", "black", "yellow"))(50), ...) {
+  if (!requireNamespace("gplots", quietly = TRUE)) {
+    stop("Package gplots needed for this function. Please install it", call. = FALSE)
   }
-  heatmap.2(as.matrix(x),density.info="none",
-            col=col,
-            trace="none",...)
-}
+  heatmap.2(as.matrix(x), density.info = "none", col = col, trace = "none", ...)
+} 

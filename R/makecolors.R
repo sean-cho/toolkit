@@ -12,10 +12,14 @@
 #' Can also be generate unique \code{pch} labels (see \bold{Examples}).
 #' 
 #' @return A list containing:
-#' \describe{
-#'  \item{Legend:}{A unique vector/color pair for easy legend plotting.}
-#'  \item{Colors:}{A matrix or vector of colors for plotting.}
-#'  }
+#'    \describe{
+#'      \item{Legend:}{A unique vector/color pair for easy legend plotting.}
+#'      \item{Colors:}{A matrix or vector of colors for plotting.}
+#'    }
+#' 
+#' @import RColorBrewer
+#' @export makecolors
+#' 
 #' @examples
 #' x <- factor(sample(c('a','b','c'), 30, replace = TRUE))
 #' colset <- makecolors(x)

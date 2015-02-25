@@ -13,6 +13,9 @@ myheatmap2(x, col = colorRampPalette(c("blue", "black", "yellow"))(50), ...)
 
 \item{...}{Other arguments to be passed on to \code{heatmap.2}}
 }
+\value{
+An object of the class list from \code{heatmap.2}.
+}
 \description{
 \code{myheatmap2} Runs \code{heatmap.2} with personalized color scheme.
 }

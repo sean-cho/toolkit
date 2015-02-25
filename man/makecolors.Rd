@@ -15,10 +15,10 @@ makecolors(object, pal = cbbPalette, keep.order = TRUE)
 }
 \value{
 A list containing:
-\describe{
- \item{Legend:}{A unique vector/color pair for easy legend plotting.}
- \item{Colors:}{A matrix or vector of colors for plotting.}
- }
+   \describe{
+     \item{Legend:}{A unique vector/color pair for easy legend plotting.}
+     \item{Colors:}{A matrix or vector of colors for plotting.}
+   }
 }
 \description{
 \code{makecolors} Generates color labels and legends for factors.
