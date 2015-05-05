@@ -1,4 +1,4 @@
-#' Personalized heatmap.2
+#' Personalized heatmap.3
 #' 
 #' \code{myheatmap3} Runs \code{heatmap.3} with personalized color scheme.
 #' 
@@ -13,10 +13,6 @@
 #' 
 #' @return An object of the class list from \code{heatmap.3}.
 #' @export
-#' 
-#' @seealso \code{\link[gplots]{heatmap.2}}
-#' 
-#' @importFrom gplots heatmap.3
 
 myheatmap3 = function(x,col=colorRampPalette(c("blue","black","yellow"))(50),...){
   heatmap.3(as.matrix(x),density.info="none",

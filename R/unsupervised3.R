@@ -14,8 +14,6 @@
 #'    
 #' @return A heatmap.3 object and plot.
 #' @export
-#'    
-#' @seealso \code{\link[gplots]{heatmap.2}}
 
 unsupervised.3 = function(x,n,col=colorRampPalette(c("blue","black","yellow"))(50),...){
   dumsd = apply(x,1,sd,na.rm=TRUE)
