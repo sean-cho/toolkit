@@ -14,7 +14,7 @@
 #' @return An object of the class list from \code{heatmap.3}.
 #' @export
 #' 
-#' @seealso \code{\link[gplots]{heatmap.3}}
+#' @seealso \code{\link[gplots]{heatmap.2}}
 #' 
 #' @importFrom gplots heatmap.3
 
