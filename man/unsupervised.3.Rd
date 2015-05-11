@@ -5,7 +5,7 @@
 \title{Unsupervised heatmap by standard deviation}
 \usage{
 unsupervised.3(x, n, col = colorRampPalette(c("blue", "black", "yellow"))(50),
-  ...)
+  main = NULL, ...)
 }
 \arguments{
 \item{x}{Numeric matrix with samples in columns and features in rows.}
@@ -27,8 +27,5 @@ A heatmap.3 object and plot.
 Finds the most variable features across all samples by standard
    deviation, clusters them, and plots it on a heatmap using the
    \code{heatmap.3} function.
-}
-\seealso{
-\code{\link[gplots]{heatmap.2}}
 }
 

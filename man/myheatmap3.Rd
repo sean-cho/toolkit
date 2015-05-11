@@ -2,7 +2,7 @@
 % Please edit documentation in R/myheatmap3.R
 \name{myheatmap3}
 \alias{myheatmap3}
-\title{Personalized heatmap.2}
+\title{Personalized heatmap.3}
 \usage{
 myheatmap3(x, col = colorRampPalette(c("blue", "black", "yellow"))(50), ...)
 }
@@ -24,8 +24,5 @@ Turns of \code{density.info} and \code{trace} and sets the
 color scheme to blue-black-yellow. Other arguments can be passed onto
 \code{heatmap.3}. Most commonly used are \code{ColSideCol} and
 \code{RowSideCol}.
-}
-\seealso{
-\code{\link[gplots]{heatmap.3}}
 }
 

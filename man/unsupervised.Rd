@@ -5,7 +5,7 @@
 \title{Unsupervised heatmap by standard deviation}
 \usage{
 unsupervised(x, n, col = colorRampPalette(c("blue", "black", "yellow"))(50),
-  ...)
+  main = NULL, ...)
 }
 \arguments{
 \item{x}{Numeric matrix with samples in columns and features in rows.}

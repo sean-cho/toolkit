@@ -15,9 +15,14 @@
 #' @return A heatmap.3 object and plot.
 #' @export
 
-unsupervised.3 = function(x,n,col=colorRampPalette(c("blue","black","yellow"))(50),...){
+unsupervised.3 = function(x,n,col=colorRampPalette(c("blue","black","yellow"))(50),main = NULL,...){
   dumsd = apply(x,1,sd,na.rm=TRUE)
   dumrows = dim(x)[1]
   dum = x[dumsd>=quantile(dumsd,(dumrows-n)/dumrows,na.rm=TRUE),]
-  myheatmap3(dum,main=paste("Top",round(n),"Probes",sep=" "),col = col,...)
+  if(is.null(main)){
+    Main = paste("Top ", round(n)," Probes\nN = ", ncol(x), sep="")
+  } else {
+    Main = main
+  }
+  myheatmap3(dum,main=Main,col = col,...)
 }
