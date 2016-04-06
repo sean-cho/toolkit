@@ -5,7 +5,10 @@ Collection of wrappers and functions for R.
 The preferred method for installing would be via the "devtools" package developed by Hadley Wickham.
 
 ```
+# If devtools is not installed, install it
 install.packages('devtools')
+
+# Load library and run install_github
 library(devtools)
 install_github('sean-cho/toolkit')
 ```
