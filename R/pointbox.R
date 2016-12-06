@@ -18,33 +18,18 @@
 #' @param s_outline Logical. Outline points.
 #' @param ... Arguments passed on to par. See \code{\link[graphics]{par}}.
 #' 
-#' @details Input can either be a matrix where rows are samples and columns
-#'    are variables of factors or colors. For a matrix of factors, define 
-#'    \code{colFrame = FALSE}, \code{makecolors} with palette \code{pal} is
-#'    used to color the matrix. If \code{colFrame = TRUE}, the colors are 
-#'    plotted verbatim.
+#' @details Colors for boxes and points are defined separately to allow for
+#'    fine-tuned user control.
 #'    
-#'    \code{rowLine} and \code{colLine} are \code{line} arguments for y-lab
-#'    and x-lab respectively. See \code{\link[graphics]{par}}. \code{colSize} 
-#'    is the \code{cex.axis} argument for x-lab.
-#'    
-#' @return Plot of a colored table.
+#' @return Boxplot with horizontally jittered points.
 #' @export
 #' 
 #' @examples
-#' # Factor variables
-#' x1 <- matrix(sample(c('Positive','Negative'),50,replace = TRUE),25,2,
-#'              dimnames = list(paste('Sample',1:25,sep='_'),
-#'              c('Mutation_1','Mutation_2')))
-#' x2 <- sample(c('Papillary','Medullary','Mucinous'),25,replace = TRUE)
-#' x <- cbind(x1,Type = x2); rm(x1,x2)
-#' colmat(x)
-#' 
-#' # Color variables
-#' x <- matrix(sample(c('skyblue3' , 'tan3'), 75, replace = TRUE), 25, 3, 
-#'             dimnames = list(paste('Sample',1:25,sep='_'),
-#'                             c('Var1','Var2','Var3')))
-#' colmat(x)
+#' # Make data
+#' d <- c(rnorm(n = 10, mean = 1, sd = 0.5),
+#'        rnorm(n = 10, mean = 5, sd = 0.5))
+#' g <- c(rep('a', 10), rep('b', 10))
+#' pointbox(value = d, grp = g)
 #' 
 #' @seealso \code{\link[graphics]{par}}
 
@@ -77,9 +62,15 @@ pointbox <- function(value, grp,
                  labels = paste0('n = ', BP$n))
   
   if(stat_test){
-    test_res <- signif(summary(aov(value ~ grp))[[1]][,'Pr(>F)'][1], 2)
-    title(main = paste0('One-way ANOVA p-value = ', test_res), font.main = 1, 
-          cex.main = 0.8, line = 0.5)
+    if(length(unique(grp) == 2)){
+      test_res <- signif(t.test(value ~ grp)$p.value, 2)
+      title(main = paste0('Welch\'s corrected t-test p-value = ', test_res), font.main = 1, 
+            cex.main = 0.8, line = 0.5)
+    } else {
+      test_res <- signif(summary(aov(value ~ grp))[[1]][,'Pr(>F)'][1], 2)
+      title(main = paste0('One-way ANOVA p-value = ', test_res), font.main = 1, 
+            cex.main = 0.8, line = 0.5) 
+    }
   }
 }
 
@@ -110,8 +101,14 @@ pointbox_label <- function(value, grp,
                  labels = paste0('n = ', BP$n))
   
   if(stat_test){
-    test_res <- signif(summary(aov(value ~ grp))[[1]][,'Pr(>F)'][1], 2)
-    title(main = paste0('One-way ANOVA p-value = ', test_res), font.main = 1, 
-          cex.main = 0.8, line = 0.5)
+    if(length(unique(grp) == 2)){
+      test_res <- signif(t.test(value ~ grp)$p.value, 2)
+      title(main = paste0('Welch\'s corrected t-test p-value = ', test_res), font.main = 1, 
+            cex.main = 0.8, line = 0.5)
+    } else {
+      test_res <- signif(summary(aov(value ~ grp))[[1]][,'Pr(>F)'][1], 2)
+      title(main = paste0('One-way ANOVA p-value = ', test_res), font.main = 1, 
+            cex.main = 0.8, line = 0.5) 
+    }
   }
 }
