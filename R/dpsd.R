@@ -5,6 +5,7 @@
 #' @param x Matrix of numbers with columns indicating samples and rows
 #'    indicating features.
 #' @param n Number of features to choose.
+#' @param .order Logical. Return features in decreasing SD values.
 #' 
 #' @details Identifies the most variable features across samples by
 #'    standard deviation (sd). The \code{n} features with highest sd
@@ -21,8 +22,13 @@
 #' dpsd(rbind(x1,x2),20)
 #' 
 
-dpsd <- function(x, n){
+dpsd <- function(x, n, .order = TRUE){
   dumsd <- apply(x, 1, sd, na.rm=TRUE)
+  if(.order){
+    ix <- order(dumsd, decreasing = TRUE)
+    x <- x[ix,]
+    dumsd <- dumsd[ix]
+  }
   dumrows <- dim(x)[1]
   dum <- x[dumsd >= quantile(dumsd, (dumrows-n)/dumrows, na.rm=TRUE),]
   return(dum)
