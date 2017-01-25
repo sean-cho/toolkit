@@ -4,13 +4,15 @@
 \alias{dpsd}
 \title{Differential probes by standard deviation}
 \usage{
-dpsd(x, n)
+dpsd(x, n, .order = TRUE)
 }
 \arguments{
 \item{x}{Matrix of numbers with columns indicating samples and rows
 indicating features.}
 
 \item{n}{Number of features to choose.}
+
+\item{.order}{Logical. Return features in decreasing SD values.}
 }
 \value{
 A matrix of nrow = n features with highest sd.
