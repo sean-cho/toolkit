@@ -51,8 +51,9 @@ Colors for boxes and points are defined separately to allow for
 # Make data
 d <- c(rnorm(n = 10, mean = 1, sd = 0.5),
        rnorm(n = 10, mean = 5, sd = 0.5))
+l <- paste0('L', 1:20)
 g <- c(rep('a', 10), rep('b', 10))
-pointbox(value = d, grp = g)
+pointbox_label(value = d, grp = g, label_names = l)
 
 }
 \seealso{

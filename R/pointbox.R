@@ -49,7 +49,7 @@ pointbox <- function(value, grp,
   .mapper <- 1:length(BP$names)
   names(.mapper) <- BP$names
   x_loc <- .mapper[as.character(grp)]
-  x_loc_plot <- jitter(x_loc)
+  x_loc_plot <- jitter(x_loc, s_jitter)
   
   if(is.null(s_col)) s_col <- scales::alpha('black', 0.5)
   points(x = x_loc_plot, y = value, pch = s_pch, col = s_col)
