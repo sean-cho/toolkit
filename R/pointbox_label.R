@@ -1,9 +1,10 @@
-#' Boxplots with points
+#' Boxplots with points and labels
 #' 
-#' \code{pointbox} Plot boxplots with points (scatterplot).
+#' \code{pointbox_label} Plot boxplots with points and labels each point.
 #' 
 #' @param value Numeric variable for N measurements.
 #' @param grp Classification of measurements.
+#' @param label_names Character vector of length value. Use NA to hide specific names.
 #' @param b_col Boxplot color. Default: NULL (black)
 #' @param s_col Scatterplot color. Default: NULL (black). If specified, length of N, 
 #'    as each point can be colored separately.
@@ -27,21 +28,23 @@
 #' # Make data
 #' d <- c(rnorm(n = 10, mean = 1, sd = 0.5),
 #'        rnorm(n = 10, mean = 5, sd = 0.5))
+#' l <- paste0('L', 1:20)
 #' g <- c(rep('a', 10), rep('b', 10))
-#' pointbox(value = d, grp = g)
+#' pointbox_label(value = d, grp = g, label_names = l)
 #' 
 #' @seealso \code{\link[graphics]{par}}
 
-pointbox <- function(value, grp, 
-                     b_col = NULL, s_col = NULL,
-                     s_pch = 16, s_jitter = NULL,
-                     showN = TRUE, heightN = NULL,
-                     stat_test = TRUE, y_range = NULL,
-                     s_outline = TRUE, ...){
+
+pointbox_label <- function(value, grp, label_names = NULL,
+                           b_col = NULL, s_col = NULL,
+                           s_pch = 16, s_jitter = NULL,
+                           showN = TRUE, heightN = NULL,
+                           stat_test = TRUE, y_range = NULL,
+                           ...){
   
   y_min <- min(value, na.rm = TRUE)
   y_max <- max(value, na.rm = TRUE)
-  if(showN) y_max <- max(value) + abs(max(value))*0.1
+  if(showN) y_max <- max(value) + abs(max(value))*0.25
   if(showN | is.null(y_range)) y_range <- c(y_min, y_max)
   
   BP <- boxplot(value ~ grp, col = b_col, pch = NA, ylim = y_range, ...)
@@ -49,16 +52,23 @@ pointbox <- function(value, grp,
   .mapper <- 1:length(BP$names)
   names(.mapper) <- BP$names
   x_loc <- .mapper[as.character(grp)]
-  x_loc_plot <- jitter(x_loc)
+  x_pos <- jitter(x_loc)
   
   if(is.null(s_col)) s_col <- scales::alpha('black', 0.5)
-  points(x = x_loc_plot, y = value, pch = s_pch, col = s_col)
-  if(s_outline) points(x = x_loc_plot, y = value, pch = 1, col = 'black')
+  points(x = x_pos, y = value, pch = s_pch, col = s_col)
   
   if(is.null(heightN)) heightN = y_max
   
   if(showN) text(x = 1:length(BP$n), y = heightN, pos = 1, 
                  labels = paste0('n = ', BP$n))
+  
+  if(!is.null(label_names)){
+    if(length(label_names) != length(value)){
+      stop('Label names and values do not have the same lengths.')
+    }
+    side <- ifelse(x_loc == 1, 4, 2)
+    text(x = x_pos, y = value, pos = side, labels = label_names)
+  }
   
   if(stat_test){
     if(length(unique(grp)) == 2){
@@ -72,4 +82,3 @@ pointbox <- function(value, grp,
     }
   }
 }
-
